@@ -1,0 +1,175 @@
+<html>
+  <head>
+    <title>Caesura Instruction Manual</title>
+    <style>
+      h3
+      {
+        color:#FFFFFF;
+      }
+      p
+      {
+        color:#FFFFFF;
+        font-size:15px;
+      }
+      b
+      {
+        color:#FF00FF;
+      }
+      ol
+      {
+        color:#00FF00;
+      }
+    </style>
+  </head>
+  <body style="background:#000000;color:#FFFFF;"> 
+    <h3>Caesura Instruction Manual</h3>
+    <p>
+      People of Earth, I present to you the fruits of my free time.<br/>
+      <b>Please take a moment and read this entire manual before you start, or if you have access to a computer, visit the more comprehensive online guide
+      at</b> <span color="#00FF00">www.gundersoft.com/caesura</span>
+    </p>
+    <p><b>Introduction:</b><br/>
+      What is Caesura exactly, you might ask? Terrific question! Caesura is anything you want it to be. It started out as a remote administration suite but 
+      is slowly expanding, making it applicable as a parental control program, lost phone finder, Remote monitoring solution, and even a practical joke app
+      for the "TROLLS" among us ;) Please keep in mind, any usage of this software is the responsibility of the user. Gundersoft and Christian Gunderman shall
+      not be liable for any legal issues or pain and suffering that is experienced as a result of the installation, use, or distribution of this program.
+      I am simply a student trying to hone my computer skills before I begin my career and this is my gift to the world.
+    </p>
+    <p><b>How does it work:</b><br/>
+      Well, its quite simple really: Caesura monitors your phone's SMS (a.k.a. text messages) in the background, waiting for a command.
+      To control a phone, install the Caesura app <b>on the phone that you want to control</b> (yes, it MUST be on the phone that is being controlled, not 
+      yours) and check the 'Enable Service' checkbox on the main Caesura screen. When you want to control the phone in question, all that you have to do is text
+      <span style="color:#00AA00"><b>!login</b></span> to that phone, or, if you are a lazy person, install the app on your phone too and click the 'Login to 
+      Another Phone' button on the main Caesura screen. After a quick moment or two, the phone will respond and tell you that it is ready for a command. From 
+      that moment on, all SMS messages are treated as commands until you send the <span style="color:#00AA00"><b>exit</b></span> command. For a full list of 
+      commands, scroll to the bottom of this document <b>DO NOT FORGET TO SEND THE EXIT COMMAND OR ELSE OTHER PEOPLE MAY BE ABLE TO CONTROL PHONE</b>
+    </p>
+    <p><b>Controlling your own phone:</b>
+      To control your own phone remotely, borrow a friend's phone and send a text message containing <span style="color:#00AA00"><b>!login</b></span> to your
+      phone. <i>After</i> your phone responds, enter your password and your phone will send a text saying that Caesura is logged in. From this moment on, you can send 
+      any command as a text message. For a full list of commands, scroll to the bottom of this document.
+    </p>
+    <p><b>Controlling someone else's phone:</b>
+      Before you consider controlling someone else's phone, consider this: by controlling a phone that belongs to another person, you can play innocent practical
+      jokes, however, this app also has the power to read/send sms messages, dial phone numbers, read contacts, etc. Controlling another person's phone (aside
+      from your own child's phone, which is legal in some countries) may be illegal. Check your country's laws before use. Alright, now that the "cover my butt"
+      clause is out of the way: to control another phone, install this app <b>on the phone that you want to control</b>. The phone being
+      controlled must be an Android 2.1 or newer device. However, you can control that phone from any phone (yes, even an iPhone) since commands are sent by text 
+      message.
+    </p>
+    <p><b>Using commands:</b>
+      Once you have logged into Caesura remotely from another phone, any text that you send will be treated as a command until you send the <b>exit</b> command.
+      To send a command, type it into a text followed by a space and any additional parameters. For example, the <b>toast</b> command which is listed in the commands
+      list as: <span style="color:#00AA00">toast [ticker] [text]</span> accepts two additonal parameters, ticker and text (for more information on what these two
+      parameters do, read the commands list below). To use this command enter the command name, a space, the ticker, another space, and then the text. 
+      For example:<br /><br />
+      
+      toast [ticker_text] [text] : toast ExampleNotification Hello, this is the notification message<br/><br/>
+      
+      Notice, although the different parameters are separated by spaces, the last parameter, which is meant to accept a full sentence of text, can have spaces. 
+      Some more examples are below, along with the way that they are listed in the command list:<br/><br/>
+      
+      sendsms [phone_number] [text] : sendsms 9375551919 Hello, this is a text message sent from a phone.<br/>
+      call [phone_number] [additional_options] : call 9375551919 speaker<br/>
+      help [command] : help torch
+    </p>
+    <p><b>Commands List:</b>
+      <b>!login</b> text this command to phone to connect and start controlling the phone. After you are connected, you can use any of the below commands to interact
+      until you are done. When finished, use the <b>exit</b> command to logout. DO NOT FORGET TO LOG OUT.
+      <ol>
+        <li>
+          <b>toast [ticker] [text]</b> Displays a notification on the Android Notification Bar. Replace [ticker] With the title for the notification (with no spaces
+          and replace [text] with the text that will be displayed on the notification (can have spaces).
+        </li>
+        <li>
+          <b>sendsms [phone_number] [text]</b> Sends a text message. Replace [phone_number] with 10 digit number to send text to. Replace [text] with text to send.
+          Message length is limited to phone character limitation (between 12-155 characters depending on the phone).
+        </li>
+        <li>
+          <b>torch</b> Send this command to turn on the flashlight. Please note: this command only works with some phones. Remember to turn off the flashlight by
+          sending the torch command again before logging out. Logging out does not turn off flashlight!!
+        </li>
+        <li>
+          <b>panic</b> If you lose your phone, send this command to turn the ringer volume up all the way, and make the phone ring and flash the light to help you
+          find it. Send again to turn off panic mode.
+        </li>
+        <li>
+          <b>call [phone_number] [options]</b> Replace [phone_number] with a number to call. For example: call 9875551313 will make the phone call that number.
+          Optionally, add the word speaker to the end where [options] is to make the phone call on speaker phone, like so: call 9875551313 speaker.
+        </li>
+        <li>
+          <b>help [command]</b> Replace [command] with one of the commands from this list and Caesura will tell you what the command does and how to use it.
+        </li>
+        <li><b>status</b> Tells info about phone, including battery level, and whether or not wifi and gps are on.</li>
+        <li>
+          <b>password [new_password]</b> Sets the login password for Caesura to [new_password]. For example, password smelly_cheese sets the password to 
+          smelly_cheese
+        </li>
+        <li>
+          <b>unlock</b> Bypasses the phones keyguard. If the phone has a password of PIN code set, it will disable it temporarily or until the phone is rebooted.
+        </li>
+        <li>
+          <b>block [phone_number]</b> Adds [phone_number] to the block list, making the phone being controlled unable to get text messages from that number.
+          However, calls will still go through.
+        </li>
+        <li>
+          <b>unblock [phone_number]</b> Removes [phone_number] from the block list.
+        </li>
+        <li>
+          <b>blocked</b> Retrieves a list of numbers that were blocked with the block command.
+        </li>
+        <li>
+          <b>forward [phone_number]</b> Adds [phone_number] to the forward list, making any text received from that number be automatically sent to 
+          the phone specified with forwardto command.
+        </li>
+        <li>
+          <b>unforward [phone_number]</b> Removes [phone_number] from the forward list.
+        </li>
+        <li>
+          <b>forwarded</b> Returns a list of all the numbers currently being forwarded
+        </li>
+        <li>
+          <b>forwardto [phone_number]</b> Sets the phone number that all texts from numbers on the forward list will be sent to.
+        </li>
+        <li>
+          <b>contacts [command] [name]</b> Allows interaction with the contacts database. Replace command with either search, or getphone. To search for all
+          contacts with the name Lori, for example: contacts search lori<br /> or to get the phone number of a lady named Sarah Stuart: contacts getphone Sarah Stuart
+        </li>
+        <li>
+          <b>more</b> Whenever a Caesura message ends with ...more it means that there is more message that would not fit in the text. This command
+          gets the rest of the last response.
+        </li>
+        <li>
+          <b>speak [text]</b> Makes phone speak out loud. This is a great prank! Replace [text] with words for the phone to say out loud. First time that you send
+          this command, the text WILL NOT be spoken because Caesura first has to start up Text To Speech. The second time you send, it will speak. To insure that
+          the text spoken can be heard well, use this command to turn the volume up first: Volume media 20
+        </li>
+        <li>
+          <b>volume [channel] [amount]</b> Sets Android system volumes. Replace [channel] with one of the following: media, notifications, alarm, dtmf, ring, sys, and
+          replace amount with either mute, unmute, or a value 0 to 20 to set the new volume. 0 represents minimum volume (off) and 20 represents maximum. The different
+          channels mean different things. Media is music/apps/TextToSpeeech/etc, notifications is SMS ringtone volume, ring is ringtone volume, alarm is alarm volume,
+          dtmf is phone dial tone volumes, and sys is system sounds volume.
+        </li>
+         <li>
+          <b>speakerphone</b> Toggles speakerphone for calls that are in progress.
+        </li>
+        </li>
+        <li>
+          <b>Vibrate</b> Toggles phone vibrate settings. DOES NOT MUTE RINGER. To mute ringer, you must first use: volume ring mute
+        </li>
+        <li>
+          <b>wifi</b> Toggles phone WIFI radio.
+        </li>
+        <li>
+          <b>gps</b> Toggles phone GPS radio.
+        </li>
+        <li><b>about</b> Tells Caesura Version and Build Number.</li>
+        <li><b>list</b> Lists supported Caesura commands in no particular order.</li>
+        <li>
+          <b>exit</b> Logs out of Caesura. DO NOT FORGET TO SEND THIS COMMAND WHEN FINISHED.
+        </li>
+        
+      </ol>
+    </p>
+  </body>
+</html>

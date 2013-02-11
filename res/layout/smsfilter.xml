@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/bannerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bannerImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/banner_subscreen" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="50dip"
+            android:layout_marginTop="20dip"
+            android:gravity="center|center_horizontal"
+            android:text="@string/smsfilter_window_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/welcomeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dip"
+            android:text="@string/smsfilter_welcome_tv" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        	<com.google.ads.AdView
+                    android:id="@+id/adView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="bottom|top"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="a14ec8a939ea7aa"
+                    android:gravity="bottom"
+                    ads:loadAdOnCreate="true" />
+            <TextView
+                android:id="@+id/forwardedNumbersTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/smsfilter_forwarded_tv" />
+
+            <Spinner
+                android:id="@+id/forwardedNumbersSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/smsfilter_blocked_list_hint" />
+
+            <RelativeLayout
+                android:id="@+id/forwardedNumbersLayout"
+                android:layout_width="match_parent"
+                android:layout_height="74dp" >
+
+                <Button
+                    android:id="@+id/addForwardedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/smsfilter_blocked_add" />
+
+                <Button
+                    android:id="@+id/removeForwardedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/addForwardedButton"
+                    android:text="@string/smsfilter_blocked_remove" />
+
+                <Button
+                    android:id="@+id/forwardedOptionsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/removeForwardedButton"
+                    android:text="@string/smsfilter_forwarded_options_btn" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/blockedTextsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/smsfilter_blocked_texts_tv" />
+
+            <Spinner
+                android:id="@+id/blockedNumbersSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:prompt="@string/smsfilter_blocked_list_hint" />
+
+            <RelativeLayout
+                android:id="@+id/blockedTextsButtonLayout"
+                android:layout_width="match_parent"
+                android:layout_height="74dp" >
+
+                <Button
+                    android:id="@+id/addBlockedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/smsfilter_blocked_add" />
+
+                <Button
+                    android:id="@+id/removeBlockedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/addBlockedButton"
+                    android:text="@string/smsfilter_blocked_remove" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

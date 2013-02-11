@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/bannerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/banner" />
+
+    <ScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/mainControlsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/welcomeTextView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/main_welcome_tv" />
+
+            <CheckBox
+                android:id="@+id/serviceEnabledCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_service_enabled_cb" />
+
+            <TextView
+                android:id="@+id/connectedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:gravity="center"
+                android:shadowColor="#FF00FF00"
+                android:shadowRadius="10"
+                android:text="@string/main_connected_tv_disconnected"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <Button
+                android:id="@+id/openConsoleButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_open_console_btn" />
+
+            <Button
+                android:id="@+id/smsBlackListButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_sms_blacklist_btn" />
+
+            <Button
+                android:id="@+id/locationButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_location_btn"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/trollPanelButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_troll_panel_btn"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/tutorialsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_main_tutorials_btn" />
+
+            <Button
+                android:id="@+id/manualButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_manual_button" />
+
+            <Button
+                android:id="@+id/exitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/main_exit_btn"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:id="@+id/adContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </RelativeLayout>
+                       <com.google.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                ads:adSize="BANNER"
+                ads:adUnitId="a14ec8a939ea7aa"
+                android:gravity="bottom"
+                ads:loadAdOnCreate="false" >
+            </com.google.ads.AdView>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

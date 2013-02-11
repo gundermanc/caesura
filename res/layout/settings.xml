@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/bannerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <ImageView
+            android:id="@+id/bannerImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/banner_subscreen" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="50dip"
+            android:layout_marginTop="20dip"
+            android:gravity="center|center_horizontal"
+            android:text="@string/settings_window_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/welcomeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:text="@string/main_settings_tv" />
+
+    <ScrollView
+        android:id="@+id/mainScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:orientation="vertical" >
+
+            <com.google.ads.AdView
+                    android:id="@+id/adView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="bottom|top"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="a14ec8a939ea7aa"
+                    android:gravity="bottom"
+                    ads:loadAdOnCreate="true" />
+            <CheckBox
+                android:id="@+id/requirePasswordCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_service_require_password_cb" />
+
+            <CheckBox
+                android:id="@+id/blockMoleTextsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_service_block_mole_texts_cb" />
+
+            <CheckBox
+                android:id="@+id/notificationsEnabledCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/main_enable_notifications_cb" />
+
+            <Button
+                android:id="@+id/configurePanicModeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_configure_panic_mode_btn" />
+
+            <Button
+                android:id="@+id/reviewAccessLogButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_review_access_log_btn" />
+
+            <Button
+                android:id="@+id/setPasswordButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/main_service_set_password_btn" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

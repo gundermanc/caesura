@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent" android:id="@+id/relativeLayout1" android:layout_height="match_parent">
+        <TextView android:text="TextView" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:id="@+id/bannerTitleTextView" android:layout_width="wrap_content" android:layout_alignParentTop="true" android:layout_marginTop="166dp" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" android:keepScreenOn="true" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:gravity="center" android:textSize="72px" android:shadowRadius="12"></TextView>
+        <TextView android:text="TextView" android:textAppearance="?android:attr/textAppearanceLarge" android:layout_height="wrap_content" android:layout_below="@+id/bannerTitleTextView" android:layout_centerHorizontal="true" android:id="@+id/bannerCaptionTextView" android:layout_width="match_parent" android:gravity="center_horizontal"></TextView>
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="52dp"
+            android:onClick="stopSound"
+            android:text="@string/panicbanner_stop_btn" />
+
+    </RelativeLayout>
+    
+</LinearLayout>

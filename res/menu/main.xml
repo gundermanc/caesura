@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/settingsMenuItem" android:title="Settings" android:icon="@drawable/settings_icon"></item><item android:id="@+id/aboutMenuItem" android:icon="@drawable/abouticon" android:title="About"></item>
+    <item android:id="@+id/removeLauncherIconMenuItem" android:title="Remove Launcher Icon" android:icon="@drawable/connect_icon"></item>
+    <item android:id="@+id/rateMenuItem" android:title="Rate This App" android:icon="@drawable/exclamation"></item>
+    <item android:id="@+id/emailMenuItem" android:icon="@drawable/email_icon" android:title="Email the Author"></item>
+    
+
+    
+
+</menu>

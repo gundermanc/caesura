@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/insertCommandMenuItem" android:title="Command List" android:icon="@drawable/exclamation"></item>
+    <item android:id="@+id/manualMenuItem" android:title="Instruction Manual" android:icon="@drawable/abouticon"></item>
+    <item android:id="@+id/insertPhoneNumberMenuItem" android:title="Insert Phone #" android:icon="@drawable/number"></item>
+    <item android:id="@+id/consoleTipsMenuItem" android:title="How To and Tips" android:icon="@drawable/connect_icon"></item>
+    
+
+    
+
+</menu>
