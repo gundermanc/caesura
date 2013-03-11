@@ -15,11 +15,18 @@ import android.media.MediaPlayer;
 import android.media.RingtoneManager;
 import android.net.Uri;
 
-
+/**
+ * Makes phone Panic, ring, and Flash, if supported.
+ * @author Christian Gunderman
+ */
 public class PanicMode {
+	/** The time interval, in ms at which the flash will strobe */
 	private static int strobeLightInterval = 200;
+	/** The MediaPlayer Instance used to play the ring tone */
 	MediaPlayer mMediaPlayer = null;
+	/** The title for the Panic Mode window */
 	private String pmTitle = "";
+	/** The Text for the Panic mode window */
 	private String pmText = "";
 	private static Timer eventTimer = new Timer();
 	private static Torch strobeLight = null;

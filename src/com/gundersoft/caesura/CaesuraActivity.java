@@ -1,7 +1,7 @@
 package com.gundersoft.caesura;
 
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
+//import com.google.ads.AdRequest;
+//import com.google.ads.AdView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -43,7 +43,7 @@ public class CaesuraActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
+        //inflater.inflate(R.menu.main, menu);
         return true;
     }
     
@@ -94,18 +94,24 @@ public class CaesuraActivity extends Activity {
         
         globalSharedContext = getApplicationContext();
         
-    /*    LiveLocation lm = new LiveLocation(globalSharedContext);
+        PanicMode pm = new PanicMode(false, false);
+        pm.activatePanic(getApplication(), this, true, false);
+        pm.activatePanic(getApplication(), this, false, false);
+        pm.activatePanic(getApplication(), this, true, false);
+        pm.activatePanic(getApplication(), this, false, false);
+        
+        LiveLocation lm = new LiveLocation(globalSharedContext);
         if(lm.initProvider()) {
         	Toast.makeText(globalSharedContext, "PROVIDED!!", Toast.LENGTH_LONG).show();
         }   
-		*/
+		
         //Set up Preferences
         preferences = PreferenceManager.getDefaultSharedPreferences(globalSharedContext);
         editor = preferences.edit();	
         
         //Setup Ads:
-        final AdView adView = (AdView)findViewById(R.id.adView);
-        adView.loadAd(new AdRequest());
+        //final AdView adView = (AdView)findViewById(R.id.adView);
+        //adView.loadAd(new AdRequest());
         
         //Set up Click Handlers and restore preferences
         CheckBox enableServiceCheckBox = (CheckBox)findViewById(R.id.serviceEnabledCheckBox);
@@ -201,7 +207,7 @@ public class CaesuraActivity extends Activity {
         releaseNotes();
         
         //Register App Online if not already done:
-        registerApp(false);
+        //registerApp(false);
     }
     public static void popInstructionManual(Context context){
     	popINETDialog(context, "file:///android_asset/manual.html", context.getString(R.string.app_name));

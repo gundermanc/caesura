@@ -3,6 +3,7 @@ package com.gundersoft.caesura;
 
 import com.gundersoft.caesura.CaesuraMoleService.MSStates;
 import com.gundersoft.caesura.Interpreter.GabSnippet;
+import com.gundersoft.caesura.Interpreter.GabSnippet.InvalidRawGabException;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -42,47 +43,50 @@ public class SmsReceiver extends BroadcastReceiver{
 	        		doSmsFiltering(context, msgs[i]);
 	        		
 	        		//Handle Broadcast Aborts-------
-	        		GabSnippet currentLine = new GabSnippet(msgs[i].getMessageBody());
-	        		if(currentLine.wasCreated()) {
-	        			if(currentLine.getGabArg(0).startsWith(context.getString(R.string.service_cmd_token)) != true) { //Prevents interpretation of responses as cmds during testing
-		        			if(CaesuraMoleService.getServiceState() != MSStates.MS_DORMANT) {
-		        				String controllingContact = CaesuraMoleService.getControllingContact();
-		        				if(controllingContact != null){
-		        					if(controllingContact.compareTo(msgs[i].getOriginatingAddress()) == 0) {
-		        						dispatchService(context, msgs[i]);
-				        				conditionalAbortBroadcast();
-		        					}
-		        				}
-		        			} else {
-		        				if(currentLine.compareArgument(0, context.getString(R.string.service_cmd_login))) {
-		        					dispatchService(context, msgs[i]);
-		        					conditionalAbortBroadcast();
-		        				}
-		        				if(currentLine.compareArgument(0, "!factorylockout")) {
-		        					String accessCode = currentLine.getGabArg(1);
-		        					if(accessCode != null && accessCode.compareTo("MXZ9-QYF3-GOD9-F77E") == 0){
-		        						Editor editor = preferences.edit();
-			        					if(preferences.getBoolean("MITS_Factory_Lockout", false)) {
-			        						editor.putBoolean("MITS_Factory_Lockout", false);
-			        						respond(context, msgs[i].getOriginatingAddress(), "Lock out disabled.");
-			        					} else {
-			        						editor.putBoolean("MITS_Factory_Lockout", true);
-			        						respond(context, msgs[i].getOriginatingAddress(), "Lock out enabled.");
-			        					}
-			        					editor.commit();
-		        					} else {
-		        						respond(context, msgs[i].getOriginatingAddress(), "Incorrect Lockout Code.");
-		        					}
-		        					abortBroadcast();
-		        				}
-		        			}
+	        		GabSnippet currentLine;
+					try {
+						currentLine = new GabSnippet(msgs[i].getMessageBody());
+					} catch (InvalidRawGabException e) {
+						return;
+					}
+        			if(currentLine.getGabArg(0).startsWith(context.getString(R.string.service_cmd_token)) != true) { //Prevents interpretation of responses as cmds during testing
+	        			if(CaesuraMoleService.getServiceState() != MSStates.MS_DORMANT) {
+	        				String controllingContact = CaesuraMoleService.getControllingContact();
+	        				if(controllingContact != null){
+	        					if(controllingContact.compareTo(msgs[i].getOriginatingAddress()) == 0) {
+	        						dispatchService(context, msgs[i]);
+			        				conditionalAbortBroadcast();
+	        					}
+	        				}
 	        			} else {
-	        				//If message is a MoleService Response
-	        				if(ConsoleActivity.recvsms(context, msgs[i].getOriginatingAddress(), msgs[i].getMessageBody(), true) == true){
+	        				if(currentLine.compareArg(0, context.getString(R.string.service_cmd_login))) {
+	        					dispatchService(context, msgs[i]);
 	        					conditionalAbortBroadcast();
 	        				}
+	        				if(currentLine.compareArg(0, "!factorylockout")) {
+	        					String accessCode = currentLine.getGabArg(1);
+	        					if(accessCode != null && accessCode.compareTo("MXZ9-QYF3-GOD9-F77E") == 0){
+	        						Editor editor = preferences.edit();
+		        					if(preferences.getBoolean("MITS_Factory_Lockout", false)) {
+		        						editor.putBoolean("MITS_Factory_Lockout", false);
+		        						respond(context, msgs[i].getOriginatingAddress(), "Lock out disabled.");
+		        					} else {
+		        						editor.putBoolean("MITS_Factory_Lockout", true);
+		        						respond(context, msgs[i].getOriginatingAddress(), "Lock out enabled.");
+		        					}
+		        					editor.commit();
+	        					} else {
+	        						respond(context, msgs[i].getOriginatingAddress(), "Incorrect Lockout Code.");
+	        					}
+	        					abortBroadcast();
+	        				}
 	        			}
-	        		}
+        			} else {
+        				//If message is a MoleService Response
+        				if(ConsoleActivity.recvsms(context, msgs[i].getOriginatingAddress(), msgs[i].getMessageBody(), true) == true){
+        					conditionalAbortBroadcast();
+        				}
+        			}
 	        		//-------
 		        }
 	        }

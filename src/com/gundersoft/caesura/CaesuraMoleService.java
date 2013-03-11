@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 import com.gundersoft.caesura.Interpreter.GabSnippet;
+import com.gundersoft.caesura.Interpreter.GabSnippet.InvalidRawGabException;
 import com.gundersoft.caesura.Tools.Battery;
 import com.gundersoft.caesura.Tools.GPS;
 import com.gundersoft.caesura.Tools.SmsInbox;
@@ -340,7 +341,12 @@ public class CaesuraMoleService extends Service {
 			public void runCommand(GabSnippet codeLine) {
 				String commandName = codeLine.getGabArg(1);
 				if(commandName != null) {
-					GabSnippet command = new GabSnippet(commandName);
+					GabSnippet command;
+					try {
+						command = new GabSnippet(commandName);
+					} catch (InvalidRawGabException e) {
+						return;
+					}
 					if(!scriptEngine.executeLine(command, true)) {
 						respond(R.string.service_msg_error_no_help_msg);
 					}
@@ -955,34 +961,37 @@ public class CaesuraMoleService extends Service {
 		//DISPATCH COMMAND MODE
 		if(mitsMode.compareTo("DISPATCH_CMD") == 0){
 			messageRecvWithinAutologoutDelay = true;
-			GabSnippet currentLine = new GabSnippet(intent.getStringExtra("Sms_Body"));
-			if(currentLine.wasCreated()) {
-				if(getServiceState() != MSStates.MS_DORMANT) {
-					if(currentContact.compareTo(controllingContact) == 0){
-						interpretLine(currentLine);
-					} else {
-						if(currentLine.compareArgument(0, getString(R.string.service_cmd_login))) { //Login Cmd Recv.
-							sendSms(currentContact + getString(R.string.service_msg_attempted_login), controllingContact);
-							respond(R.string.service_msg_error_access_denied_already_logged_in);
-							appendLog(currentContact, getString(R.string.service_msg_error_access_denied_already_logged_in));
-						}
-					}
+			GabSnippet currentLine;
+			try {
+				currentLine = new GabSnippet(intent.getStringExtra("Sms_Body"));
+			} catch (InvalidRawGabException e) {
+				return;
+			}
+			if(getServiceState() != MSStates.MS_DORMANT) {
+				if(currentContact.compareTo(controllingContact) == 0){
+					interpretLine(currentLine);
 				} else {
-					if(!preferences.getBoolean("MITS_Factory_Lockout", false)) {
-						repostAutoLogoutHandler(); //Start auto-logout system
-						if(preferences.getBoolean("MITS_Service_Require_Password", true) &&  //If require password and password is set
-								preferences.getString("MITS_Service_Password", "").compareTo("") != 0) {
-							setServiceState(MSStates.MS_LOGINSCREEN);
-							respond(R.string.service_msg_enter_password);
-						} else {
-							setServiceState(MSStates.MS_ACTIVE);
-							respond(R.string.service_msg_activated);
-							appendLog(currentContact, getString(R.string.service_msg_acess_granted_std));
-						}
-						controllingContact = currentContact;
-					} else {
-						respond (R.string.main_factory_lockout);
+					if(currentLine.compareArg(0, getString(R.string.service_cmd_login))) { //Login Cmd Recv.
+						sendSms(currentContact + getString(R.string.service_msg_attempted_login), controllingContact);
+						respond(R.string.service_msg_error_access_denied_already_logged_in);
+						appendLog(currentContact, getString(R.string.service_msg_error_access_denied_already_logged_in));
 					}
+				}
+			} else {
+				if(!preferences.getBoolean("MITS_Factory_Lockout", false)) {
+					repostAutoLogoutHandler(); //Start auto-logout system
+					if(preferences.getBoolean("MITS_Service_Require_Password", true) &&  //If require password and password is set
+							preferences.getString("MITS_Service_Password", "").compareTo("") != 0) {
+						setServiceState(MSStates.MS_LOGINSCREEN);
+						respond(R.string.service_msg_enter_password);
+					} else {
+						setServiceState(MSStates.MS_ACTIVE);
+						respond(R.string.service_msg_activated);
+						appendLog(currentContact, getString(R.string.service_msg_acess_granted_std));
+					}
+					controllingContact = currentContact;
+				} else {
+					respond (R.string.main_factory_lockout);
 				}
 			}
 		}
@@ -1011,7 +1020,7 @@ public class CaesuraMoleService extends Service {
 				respond(R.string.service_msg_activated);
 				appendLog(currentContact, getString(R.string.service_msg_access_granted_pswd));
 			} else {
-				if(currentLine.compareArgument(0, getString(R.string.service_cmd_exit))){
+				if(currentLine.compareArg(0, getString(R.string.service_cmd_exit))){
 					setServiceState(MSStates.MS_DORMANT);
 					respond(R.string.service_msg_deactivated);
 					stopSelf();

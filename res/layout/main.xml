@@ -101,15 +101,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
             </RelativeLayout>
-                       <com.google.ads.AdView
+              <!--        <com.google.ads.AdView
                 android:id="@+id/adView"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 ads:adSize="BANNER"
                 ads:adUnitId="a14ec8a939ea7aa"
                 android:gravity="bottom"
-                ads:loadAdOnCreate="false" >
-            </com.google.ads.AdView>
+                ads:loadAdOnCreate="false" > 
+            </com.google.ads.AdView>-->
         </LinearLayout>
     </ScrollView>
 
